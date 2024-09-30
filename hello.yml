@@ -1,0 +1,14 @@
+name :"Helloworldworkflow"
+
+
+on:
+    push:
+        branches:
+            -main
+jobs:
+    on-push: #my first job
+        runs-on: windows-latest
+        steps:
+            name: Running on main push
+            run: echo "Running on master push"
+
