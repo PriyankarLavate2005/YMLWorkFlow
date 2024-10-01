@@ -4,12 +4,24 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+  workflow_dispatch:
 
 jobs:
   on-push: # my first job
+    if: github.event_name == 'push'
     runs-on: windows-latest
     steps:
       - name: Running on main push
         run: echo "Running on main push. Do your task."
 
-
+  on-pull_request:
+    if: github.event_name == 'pull_request'
+    runs-on: windows-latest
+    steps:
+      - name: Running on pull request
+        run: echo "Running on pull request"
